@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "trigger": 2,
+    "message": "Hello! What is your name?"
+  },
+  {
+    "id": 2,
+    "trigger": 3,
+    "user": true
+  },
+  {
+    "id": 3,
+    "trigger": 4,
+    "message": "Hi {previousValue}, nice to meet you!"
+  },
+  {
+    "id": 4,
+    "trigger": 5,
+    "message": "I want to know a few things about you before we begin."
+  },
+  {
+    "id": 5,
+    "trigger": 6,
+    "message": "What's your current weight?"
+  },
+  {
+    "id": 6,
+    "trigger": 7,
+    "user": true
+  },
+  {
+    "id": 7,
+    "trigger": 8,
+    "message": "What's your waist circumference? (in inches)"
+  },
+  {
+    "id": 8,
+    "trigger": 9,
+    "user": true
+  },
+  {
+    "id": 9,
+    "trigger": 10,
+    "message": "What's your present Blood Glucose Level?"
+  },
+  {
+    "id": 10,
+    "trigger": 11,
+    "user": true
+  },
+  {
+    "id": 11,
+    "message": "Thanks for sharing your data. Let's get you started!",
+    "end": true
+  }
+]
