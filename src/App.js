@@ -3,6 +3,7 @@ import ChatBot from "react-simple-chatbot";
 import { Video, File, PhoneCall } from "react-feather";
 import Lottie from "react-lottie";
 import styled from "styled-components";
+import Report from './pages/Reports/report'
 import {
   useHistory,
   BrowserRouter as Router,
@@ -57,6 +58,13 @@ const MainPage = ({ setScreen }) => {
         <div style={{ padding: "0.5em" }}>
           <Lottie options={defaultOptions} height={"auto"} width={"100%"} />
         </div>
+
+        <Link
+            to="/report"
+            style={{ cursor: "pointer", textDecoration: "underline" }}
+          >
+            report here!
+          </Link>
       </MainSection>
       <section
         style={{
@@ -162,7 +170,8 @@ function App() {
         <Route path="/game">
           <GameBot setGameData={setGameData} />
         </Route>
-        <Route path="/">{screens[screen]()}</Route>
+        <Route exact path="/">{screens[screen]()}</Route>
+        <Route path="/report" component={Report}/>
       </Switch>
     </Router>
   );
