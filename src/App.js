@@ -2,10 +2,18 @@ import React, { useState } from "react";
 import ChatBot from "react-simple-chatbot";
 import { Video, File, PhoneCall } from "react-feather";
 import styled from "styled-components";
+import {
+  useHistory,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
 
 import "./App.css";
 
 import initialMeet from "./initialMeet.json";
+import gameSteps from "./game.json";
 
 const color = "black";
 
@@ -30,12 +38,12 @@ const MainPage = ({ setScreen }) => {
           Hello There !
           <br />
           To learn about how you can make progress on reversing diabetes,{" "}
-          <a
-            onClick={() => setScreen("GameBot")}
+          <Link
+            to="/game"
             style={{ cursor: "pointer", textDecoration: "underline" }}
           >
             click here!
-          </a>
+          </Link>
         </div>
         <div style={{ padding: "0.5em" }}>Animation goes here</div>
       </MainSection>
@@ -94,15 +102,13 @@ const MainPage = ({ setScreen }) => {
 function App() {
   const [initialData, setInitialData] = useState([]);
   const [gameData, setGameData] = useState([]);
-  const [screen, setScreen] = useState("MainPage");
+  const [screen, setScreen] = useState("InitialChatBot");
 
   const InitialChatBot = (props) => {
     const handleEnd = ({ steps, values }) => {
       console.log(values);
       setInitialData(values);
-      setTimeout(() => {
-        setScreen("MainPage");
-      }, 2000);
+      setScreen("MainPage");
     };
 
     return (
@@ -116,12 +122,12 @@ function App() {
   };
 
   const GameBot = (props) => {
+    const history = useHistory();
+
     const handleEnd = ({ steps, values }) => {
       console.log(values);
       setGameData(values);
-      setTimeout(() => {
-        setScreen("MainPage");
-      }, 2000);
+      history.push("/");
     };
 
     return (
@@ -129,7 +135,7 @@ function App() {
         handleEnd={handleEnd}
         width="100%"
         height="100vh"
-        steps={initialMeet}
+        steps={gameSteps}
       />
     );
   };
@@ -137,10 +143,18 @@ function App() {
   const screens = {
     InitialChatBot: () => <InitialChatBot setInitialData={setInitialData} />,
     MainPage: () => <MainPage setScreen={setScreen} />,
-    GameBot: () => <GameBot setGameData={setGameData} />,
   };
 
-  return <div>{screens[screen]()}</div>;
+  return (
+    <Router>
+      <Switch>
+        <Route path="/game">
+          <GameBot setGameData={setGameData} />
+        </Route>
+        <Route path="/">{screens[screen]()}</Route>
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;

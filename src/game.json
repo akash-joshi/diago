@@ -1,0 +1,58 @@
+[
+  { "id": 1, "trigger": 2, "message": "Hey There!" },
+  { "id": 2, "trigger": 3, "message": "To learn how to reverse diabetes," },
+  { "id": 3, "trigger": 4, "message": "Let's play a game!" },
+  {
+    "id": 4,
+    "trigger": 5,
+    "message": "You wake up in the morning and feel hungry, what do you eat?"
+  },
+  {
+    "id": 5,
+    "trigger": 6,
+    "options": [
+      { "value": 1, "label": "Freshly Cooked Omelette", "trigger": 6 },
+      { "value": 2, "label": "Leftover Pizza", "trigger": 6 }
+    ]
+  },
+  {
+    "id": 6,
+    "trigger": 7,
+    "message": "You get ready and have to go to work, which is 1km from your home. How do you travel?"
+  },
+  {
+    "id": 7,
+    "trigger": 8,
+    "options": [
+      { "value": 1, "label": "Bicycle There", "trigger": 8 },
+      { "value": 2, "label": "Take a Rikshaw", "trigger": 8 }
+    ]
+  },
+  {
+    "id": 8,
+    "trigger": 9,
+    "message": "Your short break starts. Your coworkers offer you a smoke. What do you do?"
+  },
+  {
+    "id": 9,
+    "trigger": 10,
+    "options": [
+      { "value": 1, "label": "Take them up on their offer", "trigger": 10 },
+      {
+        "value": 2,
+        "label": "Go on a short walk to freshen up instead",
+        "trigger": 10
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "message": "Thanks for playing the game. We'll generate a report for you.",
+    "trigger": 11
+  },
+  {
+    "id": 11,
+    "message": "Thanks for playing the game. We'll generate a report for you.",
+    "end": true
+  }
+]

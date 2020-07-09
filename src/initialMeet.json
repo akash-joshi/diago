@@ -51,7 +51,12 @@
   },
   {
     "id": 11,
-    "message": "Thanks for sharing your data. Let's get you started!",
+    "message": "Great! Thanks for sharing your data. Let's get you started!",
+    "trigger": 12
+  },
+  {
+    "id": 12,
+    "message": "Great! Thanks for sharing your data. Let's get you started!",
     "end": true
   }
 ]
