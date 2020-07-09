@@ -7,7 +7,7 @@ import Report from "./pages/Reports/report";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-
+import Button from '@material-ui/core/Button';
 import {
   useHistory,
   BrowserRouter as Router,
@@ -81,11 +81,10 @@ const MainPage = ({ setScreen }) => {
             To learn about how you can make progress on reversing diabetes
             faster,{" "}
           </div>
-          <Link
-            to="/game"
-            style={{ cursor: "pointer", textDecoration: "underline" }}
-          >
-            click here!
+          <Link to="/game" >
+              <Button style={{color:"blue"}}>
+              Click Here!
+              </Button>
           </Link>
         </div>
         {/* <Link
