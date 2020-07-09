@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 export default function Report(){
 
 
-
+    let reports=[["Blood Sugar","10-03-2020"],["Blood Sugar","20-02-2020"]]
     const useStyles = makeStyles((theme) => ({
         root: {
           width: '100%',
@@ -29,12 +29,14 @@ export default function Report(){
     return (<>
         <h1>Report</h1>
         <List className={classes.root}>
+        {reports.map(report=>{
+      return (<>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar alt="Femy Sharp" src="/static/images/avatar/1.jpg" />
         </ListItemAvatar>
         <ListItemText
-          primary="Brunch this weekend?"
+          primary={report[0]}
           secondary={
             <React.Fragment>
               <Typography
@@ -43,57 +45,16 @@ export default function Report(){
                 className={classes.inline}
                 color="textPrimary"
               >
-                Ali Connors
+                {report[1]}
               </Typography>
-              {" — I'll be in your neighborhood doing errands this…"}
+              
             </React.Fragment>
           }
         />
       </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Summer BBQ"
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                to Scott, Alex, Jennifer
-              </Typography>
-              {" — Wish I could come, but I'm out of town this…"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Oui Oui"
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                Sandra Adams
-              </Typography>
-              {' — Do you have Paris recommendations? Have you ever…'}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
+      <Divider variant="Middle" component="li" />
+      </>)
+    })}
     </List>
     
         
