@@ -40,3 +40,7 @@
 a {
   text-decoration: none;
 }
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+}

@@ -11,8 +11,8 @@
     "id": 5,
     "trigger": 6,
     "options": [
-      { "value": 1, "label": "Freshly Cooked Omelette", "trigger": 6 },
-      { "value": 2, "label": "Leftover Pizza", "trigger": 6 }
+      { "value": true, "label": "Freshly Cooked Omelette", "trigger": 6 },
+      { "value": "false", "label": "Leftover Pizza", "trigger": 6 }
     ]
   },
   {
@@ -24,8 +24,8 @@
     "id": 7,
     "trigger": 8,
     "options": [
-      { "value": 1, "label": "Bicycle There", "trigger": 8 },
-      { "value": 2, "label": "Take a Rikshaw", "trigger": 8 }
+      { "value": true, "label": "Bicycle There", "trigger": 8 },
+      { "value": "false", "label": "Take a Rikshaw", "trigger": 8 }
     ]
   },
   {
@@ -37,9 +37,9 @@
     "id": 9,
     "trigger": 10,
     "options": [
-      { "value": 1, "label": "Take them up on their offer", "trigger": 10 },
+      { "value": "false", "label": "Take them up on their offer", "trigger": 10 },
       {
-        "value": 2,
+        "value": true,
         "label": "Go on a short walk to freshen up instead",
         "trigger": 10
       }
