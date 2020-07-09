@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ChatBot from "react-simple-chatbot";
 import { Video, File, PhoneCall } from "react-feather";
+import Lottie from "react-lottie";
 import styled from "styled-components";
 import {
   useHistory,
@@ -11,6 +12,7 @@ import {
 } from "react-router-dom";
 
 import "./App.css";
+import animationData from "./lotties/happy.json";
 
 import initialMeet from "./initialMeet.json";
 import gameSteps from "./game.json";
@@ -18,8 +20,6 @@ import gameSteps from "./game.json";
 const color = "black";
 
 const MainSection = styled.section`
-  display: grid;
-  grid-template-columns: 2fr 1fr;
 `;
 
 const MainPage = ({ setScreen }) => {
@@ -30,6 +30,15 @@ const MainPage = ({ setScreen }) => {
   };
 
   const iconTextStyles = { fontSize: "0.8em", fontWeight: 500, color };
+
+  const defaultOptions = {
+    loop: false,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   return (
     <section>
@@ -45,7 +54,9 @@ const MainPage = ({ setScreen }) => {
             click here!
           </Link>
         </div>
-        <div style={{ padding: "0.5em" }}>Animation goes here</div>
+        <div style={{ padding: "0.5em" }}>
+          <Lottie options={defaultOptions} height={"auto"} width={"100%"} />
+        </div>
       </MainSection>
       <section
         style={{
@@ -102,7 +113,7 @@ const MainPage = ({ setScreen }) => {
 function App() {
   const [initialData, setInitialData] = useState([]);
   const [gameData, setGameData] = useState([]);
-  const [screen, setScreen] = useState("InitialChatBot");
+  const [screen, setScreen] = useState("MainPage");
 
   const InitialChatBot = (props) => {
     const handleEnd = ({ steps, values }) => {
