@@ -19,8 +19,7 @@ import gameSteps from "./game.json";
 
 const color = "black";
 
-const MainSection = styled.section`
-`;
+const MainSection = styled.section``;
 
 const MainPage = ({ setScreen }) => {
   const iconStyles = {
@@ -43,19 +42,23 @@ const MainPage = ({ setScreen }) => {
   return (
     <section>
       <MainSection>
-        <div style={{ padding: "0.5em" }}>
-          Hello There !
+        <Lottie options={defaultOptions} height={"auto"} width={"60%"} />
+        <div style={{ textAlign: "center", padding: "1em" }}>
+          <div style={{ fontSize: "1.5em" }}>
+            Your Latest Blood-sugar Reading
+          </div>
+          <div style={{ fontFamily: "Roboto Mono", fontSize: "2em" }}>140</div>
           <br />
-          To learn about how you can make progress on reversing diabetes,{" "}
+          <div style={{ fontSize: "1.2em" }}>
+            To learn about how you can make progress on reversing diabetes
+            faster,{" "}
+          </div>
           <Link
             to="/game"
             style={{ cursor: "pointer", textDecoration: "underline" }}
           >
             click here!
           </Link>
-        </div>
-        <div style={{ padding: "0.5em" }}>
-          <Lottie options={defaultOptions} height={"auto"} width={"100%"} />
         </div>
       </MainSection>
       <section
