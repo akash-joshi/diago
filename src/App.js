@@ -7,7 +7,7 @@ import Report from "./pages/Reports/report";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 import {
   useHistory,
   BrowserRouter as Router,
@@ -16,6 +16,8 @@ import {
   Link,
 } from "react-router-dom";
 
+import LineChart from "./components/LineChart";
+
 import "./App.css";
 import animationData from "./lotties/happy.json";
 import winnerAnimation from "./lotties/winner.json";
@@ -23,6 +25,7 @@ import loserAnimation from "./lotties/loser.json";
 
 import initialMeet from "./initialMeet.json";
 import gameSteps from "./game.json";
+import sugarSteps from "./sugar.json";
 
 const color = "black";
 
@@ -69,7 +72,7 @@ const MainPage = ({ setScreen }) => {
     <section>
       <MainSection>
         <Lottie options={defaultOptions} height={"auto"} width={"60%"} />
-        <div style={{ textAlign: "center", padding: "1em" }}>
+        <div style={{ textAlign: "center", padding: "1em", paddingTop: 0 }}>
           <div style={{ fontSize: "1.5em" }}>
             Your Latest Blood-sugar Reading
           </div>
@@ -81,18 +84,22 @@ const MainPage = ({ setScreen }) => {
             To learn about how you can make progress on reversing diabetes
             faster,{" "}
           </div>
-          <Link to="/game" >
-              <Button style={{color:"blue"}}>
-              Click Here!
+          <div style={{ marginTop: "0.5em" }}>
+            <Link style={{ marginRight: "1em" }} to="/game">
+              <Button variant="contained" color="primary">
+                Click Here
               </Button>
-          </Link>
+            </Link>
+            <Link to="/sugar">
+              <Button variant="contained" color="secondary">
+                New Reading?
+              </Button>
+            </Link>
+          </div>
         </div>
-        {/* <Link
-          to="/report"
-          style={{ cursor: "pointer", textDecoration: "underline" }}
-        >
-          report here!
-        </Link> */}
+        <div style={{ width: "100%", height: 200 }}>
+          <LineChart />
+        </div>
       </MainSection>
       <section
         style={{
@@ -184,10 +191,10 @@ const Result = ({ gameData }) => {
         />
       </div>
       <h1>{winner ? "Hooray !" : "Better Luck Next Time !"}</h1>
-      {correctAnswers > 0 ? (
+      {correctAnswers < 3 ? (
         <div>
           <h3>
-            You have room for improvement!
+            Your answers were mostly correct,<br /> but you have room for improvement!
             <br /> Your wrong answers were:
           </h3>{" "}
           <div style={{ textAlign: "left", padding: "0 2em" }}>
@@ -207,7 +214,7 @@ const Result = ({ gameData }) => {
           </div>
         </div>
       ) : (
-        <div>You Answered All Questions Correctly !</div>
+        <h3>You Answered All Questions Correctly !</h3>
       )}
     </section>
   );
@@ -215,8 +222,9 @@ const Result = ({ gameData }) => {
 
 function App() {
   const [initialData, setInitialData] = useState([]);
-  const [gameData, setGameData] = useState([true, false, false]);
-  const [screen, setScreen] = useState("MainPage");
+  const [gameData, setGameData] = useState([true, true, "false"]);
+  const [screen, setScreen] = useState("InitialChatBot");
+  const [sugarData, setSugarData] = useState(0);
 
   const InitialChatBot = (props) => {
     const handleEnd = ({ steps, values }) => {
@@ -231,6 +239,25 @@ function App() {
         width="100%"
         height="100vh"
         steps={initialMeet}
+      />
+    );
+  };
+
+  const SugarBot = (props) => {
+    const history = useHistory();
+
+    const handleEnd = ({ steps, values }) => {
+      console.log(values);
+      setSugarData(values[0]);
+      history.push("/");
+    };
+
+    return (
+      <ChatBot
+        handleEnd={handleEnd}
+        width="100%"
+        height="100vh"
+        steps={sugarSteps}
       />
     );
   };
@@ -271,6 +298,9 @@ function App() {
         <Route path="/report" component={Report} />
         <Route path="/result">
           <Result gameData={gameData} />
+        </Route>
+        <Route path="/sugar">
+          <SugarBot setSugarData={setSugarData} />
         </Route>
       </Switch>
     </Router>

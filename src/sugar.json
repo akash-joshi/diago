@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "trigger": 2,
+    "message": "Hey There!"
+  },
+  {
+    "id": 2,
+    "trigger": 3,
+    "message": "What are your latest blood sugar readings?"
+  },
+  {
+    "id": 3,
+    "trigger": 4,
+    "user": true
+  },
+  {
+    "id": 4,
+    "trigger": 5,
+    "message": "Thank You."
+  },
+  {
+    "id": 5,
+    "message": "Thanks",
+    "end": true
+  }
+]
