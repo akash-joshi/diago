@@ -16,6 +16,10 @@ import {
   Link,
 } from "react-router-dom";
 
+import "semantic-ui-css/semantic.min.css";
+
+import AppBar from "./components/appBar";
+
 import LineChart from "./components/LineChart";
 
 import "./App.css";
@@ -70,6 +74,11 @@ const MainPage = ({ setScreen }) => {
 
   return (
     <section>
+      <AppBar
+        title="Measurements"
+        url="https://medikeep.netlify.app"
+        show={true}
+      />
       <MainSection>
         <Lottie options={defaultOptions} height={"auto"} width={"60%"} />
         <div style={{ textAlign: "center", padding: "1em", paddingTop: 0 }}>
@@ -101,7 +110,7 @@ const MainPage = ({ setScreen }) => {
           <LineChart />
         </div>
       </MainSection>
-      <section
+      {/* <section
         style={{
           position: "fixed",
           bottom: 0,
@@ -148,7 +157,7 @@ const MainPage = ({ setScreen }) => {
           <Video style={iconStyles} color={color} />
           <div style={iconTextStyles}>Webinars</div>
         </a>
-      </section>
+      </section> */}
     </section>
   );
 };
@@ -194,7 +203,8 @@ const Result = ({ gameData }) => {
       {correctAnswers < 3 ? (
         <div>
           <h3>
-            Your answers were mostly correct,<br /> but you have room for improvement!
+            Your answers were mostly correct,
+            <br /> but you have room for improvement!
             <br /> Your wrong answers were:
           </h3>{" "}
           <div style={{ textAlign: "left", padding: "0 2em" }}>
@@ -223,7 +233,7 @@ const Result = ({ gameData }) => {
 function App() {
   const [initialData, setInitialData] = useState([]);
   const [gameData, setGameData] = useState([true, true, "false"]);
-  const [screen, setScreen] = useState("InitialChatBot");
+  const [screen, setScreen] = useState("MainPage");
   const [sugarData, setSugarData] = useState(0);
 
   const InitialChatBot = (props) => {
